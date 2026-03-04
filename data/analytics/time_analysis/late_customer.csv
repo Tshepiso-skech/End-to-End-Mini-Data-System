@@ -1,0 +1,17 @@
+booking_id,customer_id,service_id,customer_name,phone,email,payment_status,payment_id,payment_amount,payment_method,customer_rating,scheduled_date,payment_date,payment_delays,day,hour,booking_day,booking_hour,service_day,service_hour
+12,24,3,Tommy Walter,731509839,tommywalter@gmail.com,COMPLETED,5.0,300.0,Cash,5.0,2026-01-24 13:05:11,2026-01-26 13:27:17,2.0,Saturday,13,Saturday,13,Monday,13.0
+16,3,1,Angie Henderson,828386379,angiehenderson@gmail.com,COMPLETED,7.0,150.0,Cash,2.0,2026-02-13 01:10:00,2026-02-15 01:32:06,2.0,Friday,1,Friday,1,Sunday,1.0
+18,2,1,Noah Rhodes,839600133,noahrhodes@gmail.com,COMPLETED,9.0,150.0,Cash,2.0,2026-03-20 21:49:58,2026-03-22 22:12:04,2.0,Friday,21,Friday,21,Sunday,22.0
+24,21,1,Margaret Hawkins DDS,831718227,margaretdds@gmail.com,COMPLETED,13.0,150.0,Transfer,1.0,2026-02-11 20:41:28,2026-02-13 21:03:34,2.0,Wednesday,20,Wednesday,20,Friday,21.0
+58,47,1,John Pierce,726204505,johnpierce@gmail.com,COMPLETED,24.0,150.0,Transfer,5.0,2026-02-18 13:21:01,2026-02-20 13:43:07,2.0,Wednesday,13,Wednesday,13,Friday,13.0
+72,26,3,Judy Baker,838347382,judybaker@gmail.com,COMPLETED,28.0,300.0,Cash,3.0,2026-03-21 14:24:20,2026-03-23 14:46:26,2.0,Saturday,14,Saturday,14,Monday,14.0
+79,48,1,Shane Henderson,733158692,shanehenderson@gmail.com,COMPLETED,30.0,150.0,Card,5.0,2026-02-16 16:03:05,2026-02-18 16:25:11,2.0,Monday,16,Monday,16,Wednesday,16.0
+82,14,3,Michele Williams,763287101,michelewilliams@gmail.com,COMPLETED,31.0,300.0,Transfer,4.0,2026-02-21 22:39:39,2026-02-23 23:01:45,2.0,Saturday,22,Saturday,22,Monday,23.0
+88,18,2,Derek Zuniga,728148932,derekzuniga@gmail.com,COMPLETED,34.0,220.0,Card,5.0,2026-02-16 10:54:32,2026-02-18 11:16:38,2.0,Monday,10,Monday,10,Wednesday,11.0
+96,15,1,Dylan Miller,722691669,dylanmiller@gmail.com,COMPLETED,38.0,150.0,Card,5.0,2026-03-07 00:13:47,2026-03-09 00:35:53,2.0,Saturday,0,Saturday,0,Monday,0.0
+99,25,1,Matthew Foster,730103105,matthewfoster@gmail.com,COMPLETED,39.0,150.0,Card,5.0,2026-02-04 00:23:23,2026-02-06 00:45:29,2.0,Wednesday,0,Wednesday,0,Friday,0.0
+106,24,1,Tommy Walter,731509839,tommywalter@gmail.com,COMPLETED,44.0,150.0,Transfer,5.0,2026-03-19 02:45:27,2026-03-21 03:07:33,2.0,Thursday,2,Thursday,2,Saturday,3.0
+108,17,1,Holly Wood,761462704,hollywood@gmail.com,COMPLETED,45.0,150.0,Cash,1.0,2026-02-25 14:32:25,2026-02-27 14:54:31,2.0,Wednesday,14,Wednesday,14,Friday,14.0
+116,41,3,Paula Moreno,833542784,paulamoreno@gmail.com,COMPLETED,47.0,300.0,Card,3.0,2026-02-05 07:10:24,2026-02-07 07:32:30,2.0,Thursday,7,Thursday,7,Saturday,7.0
+146,9,2,Gabrielle Davis,725534192,gabrielledavis@gmail.com,COMPLETED,57.0,220.0,Card,2.0,2026-03-21 14:01:51,2026-03-23 14:23:57,2.0,Saturday,14,Saturday,14,Monday,14.0
+152,32,2,James Ferrell,797360260,jamesferrell@gmail.com,COMPLETED,59.0,220.0,Transfer,3.0,2026-03-13 22:50:28,2026-03-15 23:12:34,2.0,Friday,22,Friday,22,Sunday,23.0
