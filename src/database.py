@@ -1,8 +1,18 @@
 from sqlalchemy import create_engine
 from sqlalchemy import text
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
-engine=create_engine("postgresql://postgres:2003October24$@localhost:5432/CARWASH")
+#Load environment variables from the .env file
+load_dotenv()
+
+#Fetch the database URL securely
+DATABASE_URL=os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set in the environment or .env file")
+
+engine=create_engine(DATABASE_URL)
 
 #define a function that works for any dataframe:
 #inserts its contents into a database table.
