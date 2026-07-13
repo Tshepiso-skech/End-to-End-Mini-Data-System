@@ -15,7 +15,7 @@ Each layer is strictly isolate, handles separated structural responsibilities:
 |---|---|
 | [Simulate Layer](./src/simulate_data.py) | Serves as the data generation engine; it generates, structures and formats Pandas DataFrames relative to their target schemas. |
 | [Data Orchestration](./src/database.py) | Data Pipeline that moves the simulated data to native defined database tables in Postgres |
-| [Data Engineering](./src/data_engineering.py) | Data is pulled from the schema layer (PostgreSQL) into the engineering layer. The pipeline ensures necessary feature engineering measures as well as detecting and dealing with inconsistencuies. Necessary transformation measures are also taken and loaded in csv formats. |
+| [Data Engineering](./src/data_engineering.py) | Data is pulled from the schema layer (PostgreSQL) into the engineering layer. The pipeline ensures necessary feature engineering measures as well as detecting and dealing with inconsistencies. Necessary transformation measures are also taken and loaded in csv formats. |
 | [Analysis](./src/analysis.py) | This layer centralizes standard KPIs, ensuring consistent and  governed metrics; it prepares the data for interactive dashboards and reports.|
 
 
