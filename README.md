@@ -34,5 +34,5 @@ Follow these steps to initialize the PostgreSQL database schema and populate it 
 Run the data generation pipeline to seed the newly created database tables with simulated car wash operational workflows, transactions, and customer patterns following the [Simulate_data.py](src/simulate_data.py) and [database.py](src/database.py)
 
 
-## Deployment
-Hosted on Streamlit Cloud
+
+## Data Analytics

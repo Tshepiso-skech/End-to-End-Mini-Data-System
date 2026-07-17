@@ -83,7 +83,7 @@ payments=pd.DataFrame(
 )
 print(payments.head())
 
-# ASSUMPTION: 70% customers who completed bookings will leave a feedback
+# ASSUMPTION: 100% customers who completed bookings will leave a feedback
 # rates between 1 and 5
 feedback_set=completed.copy()
 feedback=pd.DataFrame(
