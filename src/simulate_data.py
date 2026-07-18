@@ -63,6 +63,7 @@ bookings=pd.DataFrame(
    }
 ) 
 print(bookings.head())
+print(f"number of customers in bookings: {bookings['customer_id'].nunique()}")
 #Payments are consequence of bookings. They depend on whether a booking was completed.
 completed=bookings[bookings['status']=='COMPLETED'].copy()
 print(completed.head())

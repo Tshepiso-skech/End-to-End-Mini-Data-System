@@ -1,2 +1,2 @@
-total_customers,top_customer,top_customer_count,repeat_rate
-49,44,10,91.83673469387756
+total_customers,booking_repeat_rate,avg_bookings_per_customer,top_customer_id,top_customer_booking_count
+50,92.0,8,39,21
