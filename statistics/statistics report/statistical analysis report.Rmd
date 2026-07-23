@@ -1,0 +1,157 @@
+---
+#title: "Carwash Analytics"
+#author: "Tshepiso M"
+#date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+
+#This chunk runs first and sets up everything
+knitr::opts_chunk$set(
+  echo = FALSE,      # Don't show code in final report
+  warning = FALSE,   # Hide warnings
+  message = FALSE    # Hide messages
+)
+# Load required libraries
+library(dplyr)       # Provides the %>% pipe operator
+library(knitr)       # Provides the kable function
+library(kableExtra)  # Provides kable_styling, column_spec, etc.
+```
+
+<!-- ====== BANNER ====== -->
+
+<div style="background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); 
+            color: white; 
+            padding: 30px 40px; 
+            border-radius: 12px; 
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+
+  <h1 style="margin: 0; font-size: 42px; font-weight: 700;"> Statistical Analysis Report </h1>
+  <p style="margin: 8px 0 0 0; font-size: 18px; opacity: 0.9;">
+    Statistics for Operational Excellence
+  </p>
+  <hr style="width: 100px; border: 1px solid rgba(255,255,255,0.3); margin: 15px auto;">
+  <p style="margin: 0; font-size: 14px; opacity: 0.8;">
+    Prepared by: Tshepiso M &nbsp;|&nbsp; Date: `r format(Sys.Date(), "%B %d, %Y")`
+  </p>
+</div>
+
+<!-- ====== EXECUTIVE SUMMARY ====== -->
+<div style="background: #f8f9fa; 
+            padding: 20px 25px; 
+            border-radius: 10px; 
+            border-left: 5px solid #2e86c1;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;">
+
+
+This report provides a comprehensive analysis of a carwash operational performance enabling strategic improvements and growth opportunities.
+
+</div>
+
+
+<!-- ====== Statistics summary ====== -->
+
+<style>
+
+  /* Applied to ALL tabs (sets fixed width and alignment) */
+  .nav-pills > li > a {
+    width: 240px !important;       /* Adjust width as needed */
+    text-align: center !important;  /* Centers text inside fixed box */
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
+
+## 1. Customer Statistical Analysis
+### {.tabset .tabset-pills}
+
+#### Lifetime Value Summary Table
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+ltv_summary=read.csv('ltv_summary.csv',header = TRUE)
+
+ltv_summary %>%
+  kable(
+    caption = "Customer Lifetime Value  Statistical Summary",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<!-- ====== Mean evaluation ====== -->
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+  <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 600; font-size: 15px;"> Average Lifetime Value</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+    The average customer lifetime value sits at <strong>1,191.02</strong>, exceeding the median of <strong>880.00</strong>.
+This tells us that a smaller group of "high value" customers is pulling the average up, while the majority of your customer base generates a lower lifetime value. 
+
+This is further proven by standard deviation value of <strong>1054.11</strong>, which informs us that there's an extreme inequality in customer lifetime values. We can then formulate a hypothesis that our data is right skewed until proven otherwise.
+
+The mean value of <strong>1,191.02</strong> cannot be reliable. We can instead opt for the median to make operational decisions 
+  </p>
+</div>
+
+
+<!-- ====== shape distribution ====== -->
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+  <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 600; font-size: 15px;"> Shape of Distribution</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+The skewness value resulted to <strong>1.13</strong> while the kurtosis value sits at <strong>4.04</strong>.
+
+This skewness value is over 2 times our benchmark of <strong>0.5</strong>. The statistic proves our hypothesis that our data is positively skewed.
+On the other hand, the kurtosis value of <strong>4.04</strong> shows the presence of a heavy tail on the right which means extreme values do exist.
+  </p>
+</div>
+
+
+
+
+### {.tabset .tabset-pills}
+
+#### Confidence Intervals
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+mean_ltv_ci=read.csv('mean_ltv_ci.csv',header = TRUE)
+
+mean_ltv_ci %>%
+  kable(
+    caption = "Customer Lifetime Value  confindence interval",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+#### Insights
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 600; font-size: 15px;"> Lifetime Value Confidence Interval</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+    Even the absolute worst-case estimate for the population mean <strong>888.24</strong> is higher than what the typical customer actually spends, <strong>880.00</strong>.
+
+Our typical chosen average lifetime value of <strong>880.00</strong>[median] does not fall within the the calculated confidence interval. This proves that taking "confidence" in the mean is dangerous.
+
+Even at the lowest bound of our confidence interval, we would still be overestimating the lifetime value generated by the majority of customers.
+
+  </p>
+</div>
