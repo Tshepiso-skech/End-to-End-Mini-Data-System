@@ -156,6 +156,8 @@ repeat_rate_ci %>%
   ) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
   column_spec(1, bold = TRUE)
+
+
 ```
 
 
@@ -200,7 +202,7 @@ Upper bound is close to 100%. We can therefore conclude that <strong>Customer Re
   </p>
 </div>
 
-
+## 2. Revenue Statistical Analysis
 
 
 
