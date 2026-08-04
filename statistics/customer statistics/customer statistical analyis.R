@@ -9,6 +9,7 @@ length(customer_lifetime_value$total_amount_paid)
 
 #CUSTOMER INTELLIGENCE
 
+
 #SECTION1
 #DESCRIPTIVE STATISTIC
 #a. data summary
@@ -49,9 +50,10 @@ setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
 #install.packages('scales')
 #install.packages('kableExtra')
 
-
-
-
+##customer ltv Q-Q plot
+qqnorm(customer_lifetime_value$total_amount_paid, main = "Normal Q-Q Plot: Customer LTV" )
+qqline(customer_lifetime_value$total_amount_paid, col="red", lwd=2)
+hist(customer_lifetime_value$total_amount_paid)
 
 
 #SECTION2
