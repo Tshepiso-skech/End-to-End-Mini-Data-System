@@ -12,22 +12,21 @@ length(customer_lifetime_value$total_amount_paid)
 
 #SECTION1
 #DESCRIPTIVE STATISTIC
-#a. data summary
+#a. DATA SUMMARY
 ltv_summary=summary(customer_lifetime_value$total_amount_paid)
 ltv_summary
 #average lifetime value=1191
 
-#convert to a data frame 
+#CONVERT TO DATAFRAME 
 ltv_summary=data.frame(as.list(ltv_summary))
 ltv_summary
 
-#b. standard deviation
+#b. STANDARD DEVIATION
 std=sd(customer_lifetime_value$total_amount_paid)
 std
 #std=1054.111
 
-#c. Skewness
-#install.packages('moments')
+#c. SKEWNESS
 library(moments)
 skewness_value=skewness(customer_lifetime_value$total_amount_paid)
 skewness_value
