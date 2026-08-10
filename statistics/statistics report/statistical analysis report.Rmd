@@ -263,7 +263,8 @@ The business experienced a significant 2-Month Gap in revenue from April to mid 
 
   </p>
 </div>
-
+### -
+### -
 ### {.tabset .tabset-pills}
 
 #### Revenue Summary Table
@@ -295,7 +296,9 @@ revenue_summary %>%
 The two-month revenue gap (April–May 2026) was excluded to prevent distortion of average daily revenue and trend analysis. This ensures that all metrics reflect only active trading periods, allowing for accurate performance assessment and a clear quantification of revenue lost during the downtime.
 
 </div>
-
+### -
+### -
+### Active Period Analysis
 ### {.tabset .tabset-pills}
 
 #### Daily Revenue Trend Analysis (Active Period)
@@ -362,4 +365,132 @@ ggplot(revenue_daily_active, aes(x=payment_amount))+
 ```
 
 
-#### Revenue Summary Table (Without Gap)
+#### Revenue Summary Table (Active period)
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+active_revenue_summary=read.csv('active_revenue_summary.csv',header = TRUE)
+
+active_revenue_summary %>%
+  kable(
+    caption = "Revenue Statistical Summary: Active Period",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Comparison Table: Active data vs Active Period</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+
+Metric              |All Data   |Active Period |Diferrence
+--------------------|-----------|--------------|--------------
+Total Revenue       | R58 360    |R58 360       |R0
+Mean Daily Revenue  | R284.68    |R459.53       |+R174.85
+Median Daily Revenue| R0         |R440.00       |+R440.00
+Standard Deviation  | R409.23    |R436.07       |+R26.84
+Skewness            | 1.30       |0.64          |	-0.66
+Kurtosis            | 3.72       |2.55          |-1.17
+Min                 | R0         |R0            | -
+Max                 | R1 640     |R1 640        | -
+
+  </p>
+</div>
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Remarks</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+*  When excluding the two-month revenue gap (April–May 2026), the average daily revenue increases from <strong>R284.68</strong>. to <strong>R459.53 </strong>, 61% increase.
+
+*  The distribution also becomes less skewed (skewness <strong>0.64</strong> vs <strong>1.30</strong>)
+
+* And less prone to extreme outliers (kurtosis <strong>2.55</strong> vs <strong>3.72</strong>).
+
+*  This confirms that the gap significantly distorted the overall revenue picture, and active-period metrics provide a more accurate baseline for operational performance and loss estimation.
+
+* Statistical tests needs to be conducted in order to verify our confidence in our mean for the active period
+
+  </p>
+</div>
+
+
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Loss Calculation</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+  
+
+  </p>
+</div>
+
+### -
+### Normality Assessment (Active Period)
+
+### {.tabset .tabset-pills}
+#### Q-Q Plot
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+revenue_daily_active=read.csv('revenue_daily_active.csv',header = TRUE)
+
+qqnorm(revenue_daily_active$payment_amount,
+       main = "Normal Q-Q Plot: Daily Revenue (Active Period) ",
+       xlab = "Theorical Quantiles",
+       ylab = "Sample Quantiles")
+qqline(revenue_daily_active$payment_amount, col="red", lwd=2)
+```
+
+#### Shapiro-Wilk Test
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+shapiro_test=read.csv('shapiro_test.csv',header = TRUE)
+
+
+    
+shapiro_test %>%
+    mutate(
+    p_value = ifelse(p_value < 0.001, "< 0.001", round(p_value, 3))
+  ) %>%
+  kable(
+    caption = "Shapiro-Wilk Test",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Normality Remark: Q-Q Plot</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+*  Portion of theorical quantiles, <strong>-2.8 < X < -0.4</strong> lies flat at a sample quantile of 0. This indicates a high concentration of zero-revenue days
+
+*  While the middle-to-upper values roughly follow the reference line, the far right end curves slightly below the line, indicating a light upper tail relative to a normal distribution.
+  </p>
+</div>
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Sapiro-Wilk Test</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+*   <strong>P-Value < 0.05</strong>. Hypothesis for Normality is rejected, and we can therefore conclude that our data does not follow normality.
+
+*  However, our data, <strong> n > 100</strong>, the Central Limit Theorem Applies. We can conclude that our sample statistic, mean approximates a normal distribution regardless of the intial distribution. Parametric Tests are eligible.
+
+  </p>
+</div>

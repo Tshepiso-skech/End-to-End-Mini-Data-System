@@ -119,10 +119,43 @@ ggplot(revenue_daily_active, aes(x=payment_amount))+
                 linewidth=1)+
   theme_minimal()
 
+#Descriptive Statistics for the active period
 
-hist(revenue_daily_active$payment_amount, prob=TRUE)
-lines(
-  density(revenue_daily_active$payment_amount),
-  col = "firebrick",
-  lwd = 2
+active_revenue_summary=data.frame(
+  min=min(revenue_daily_active$payment_amount),
+  total_revenue=sum(revenue_daily_active$payment_amount),
+  average_revenue=mean(revenue_daily_active$payment_amount),
+  median=median(revenue_daily_active$payment_amount),
+  sd=sd(revenue_daily_active$payment_amount),
+  max=max(revenue_daily_active$payment_amount),
+  kurtosis=kurtosis(revenue_daily_active$payment_amount),
+  skweness=skewness(revenue_daily_active$payment_amount)
 )
+
+setwd("C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics")
+write.csv(active_revenue_summary,"active_revenue_summary.csv")
+write.csv(revenue_daily_active, "revenue_daily_active.csv")
+nrow(revenue_daily_active)
+
+
+
+# NORMALITY TEST
+#Q-Q PLOT
+qqnorm(revenue_daily_active$payment_amount,
+       main = "Normal Q-Q Plot: Daily Revenue (Active Period) ",
+       xlab = "Theorical Quantiles",
+       ylab = "Sample Quantiles")
+qqline(revenue_daily_active$payment_amount, col="red", lwd=2)
+
+
+#SHAPIRO-WILK TEST
+shaprio_test=shapiro.test(revenue_daily_active$payment_amount)
+print(shaprio_test)
+
+#ltv_summary=data.frame(as.list(ltv_summary))
+shapiro_test=data.frame(
+  statistic=shaprio_test$statistic,
+  p_value=shaprio_test$p.value
+ 
+)
+write.csv(shapiro_test, "shapiro_test.csv")
