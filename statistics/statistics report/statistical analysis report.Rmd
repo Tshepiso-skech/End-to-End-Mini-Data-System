@@ -494,3 +494,89 @@ shapiro_test %>%
 
   </p>
 </div>
+### -
+
+### {.tabset .tabset-pills}
+
+#### Average daily CI revenue (Active Period)
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+average_revenue_active_ci=read.csv('mean_active_data_ci.csv',header = TRUE)
+
+average_revenue_active_ci %>%
+  kable(
+    caption = "Average Daily revenue (Active Period): Confidence Interval",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+
+#### Revenue Loss Summary(Over Non-Active Period)
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+revenue_loss_summary=read.csv('revenue_loss_summary.csv',header = TRUE)
+
+revenue_loss_summary %>%
+  kable(
+    caption = "Revenue Loss Summary Over the Non-Active Period",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Revenue Loss Summary</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+  
+* Based on the active-period performance, <strong>n=127 days </strong>, the estimated revenue lost during the <strong>n=78 day period</strong> is <strong>R35843.15</strong> (mean-based:R34320). The 95%  confidence interval for the loss ranges from R29870.235 to R41816.06. 
+
+
+  </p>
+</div>
+
+
+### -
+
+### Weekdays' Revenue vs Weekends' Revenue
+
+### {.tabset .tabset-pills}
+
+#### Weekdays vs Weekends (Active Period)
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+weekday_weekend_test1=read.csv('weekday_weekend_test1.csv',header = TRUE)
+
+weekday_weekend_test1 %>%
+  kable(
+    caption = "Weekdays' Revenue vs Weekends' Revenue",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Weekdays vs Weekends (Active Period)</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+
+The results show that weekdays generate significantly higher revenue compared to weekends. With a p-value, <strong> p = 0.032.</strong>, the null hypothesis is rejected.This suggests that the business relies more heavily on weekday activity, presenting an opportunity to boost weekend performance through targeted promotions or service offerings.   
+
+
+  </p>
+</div>

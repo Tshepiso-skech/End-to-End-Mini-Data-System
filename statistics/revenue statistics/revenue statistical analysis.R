@@ -159,3 +159,89 @@ shapiro_test=data.frame(
  
 )
 write.csv(shapiro_test, "shapiro_test.csv")
+
+#CONFIDENCE INTERVAL FOR THE DAILY REVENUE AVERAGE
+t_test_active=t.test(revenue_daily_active$payment_amount, conf.level = 0.95)
+
+
+mean_lower_ci=t_test_active$conf.int[1]
+mean_upper_ci=t_test_active$conf.int[2]
+
+mean_active_ci=data.frame(t_test_active$estimate,mean_lower_ci,mean_upper_ci)
+colnames(mean_active_ci)=c('mean', 'lower_bound', 'upper_bound')
+
+write.csv(mean_active_ci, 'mean_active_data_ci.csv')
+
+#HOW MUCH DID THE BUSINESS LOOSE DURING THE NON-ACTIVE PERIOD
+#GAP PERIOD
+n_gap=nrow(zero_period)
+n_active=nrow(revenue_daily_active)
+
+#LOSS ESTIMATES
+Loss_mean= active_revenue_summary$average_revenue * n_gap
+loss_median= active_revenue_summary$median * n_gap
+
+#CONFIDENCE INTERVAL FOR THE MEAN LOSS
+loss_lower_ci=t_test_active$conf.int[1]*n_gap
+loss_upper_ci=t_test_active$conf.int[2]*n_gap
+#rm(loss_summary)
+#LOSS SUMMARY
+
+loss_summary=data.frame( 
+  Metric = c(
+  "Active Days",
+  "Gap Days",
+  "Mean Daily Revenue (Active)",
+  "Median Daily Revenue (Active)",
+  "Estimated Loss (Mean-Based)",
+  "Estimated Loss (Median-Based)",
+  "95% CI for Loss (Mean-Based)"))
+  
+loss_summary$Value=c(n_active,
+                     n_gap,
+                     round(active_revenue_summary$average_revenue, 3),
+                     active_revenue_summary$median,
+                     round(Loss_mean, 3),
+                     loss_median,
+                     paste0("R", round(loss_lower_ci,3), " – R", round(loss_upper_ci, 2)))
+                       
+
+write.csv(loss_summary, 'revenue_loss_summary.csv')
+
+
+#WEEKDAYS VS WEEKENDS
+#weekdays() function
+
+revenue_daily_active$day_type=ifelse(
+  weekdays(revenue_daily_active$payment_date)%in% c("Saturday", "Sunday"),
+  "weekend", 
+  "weekday"
+)
+
+write.csv(revenue_daily_active,"revenue_daily_active.csv" )
+
+#TWO-SAMPLE TEST: WEEKDAY>WEEKEND
+weekday_weekend_test=t.test(payment_amount~day_type, 
+                            data=revenue_daily_active, 
+                            alternative='greater')
+weekday_weekend_test
+
+weekday_weekend_test1=data.frame(
+  Metric=c("weekday_mean",
+           "weekend_mean",
+           "null_hypotheis",
+           "alt_hypothesis",
+           "p_value"
+           
+    )
+)
+
+weekday_weekend_test1$Value=c(
+  round(weekday_weekend_test$estimate[1],3),
+  round(weekday_weekend_test$estimate[2],3),
+  "True difference in means between group weekday and group weekend is equal to 0",
+  "True difference in means between group weekday and group weekend is greater than 0",
+  weekday_weekend_test$p.value
+)
+
+write.csv(weekday_weekend_test1,'weekday_weekend_test1.csv')

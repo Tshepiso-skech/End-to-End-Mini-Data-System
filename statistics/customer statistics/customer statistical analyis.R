@@ -98,3 +98,5 @@ repeat_rate_ci=data.frame(repeat_rate,rate_lower_ci,rate_upper_ci)
 colnames(repeat_rate_ci)=c('repeat_rate', 'lower_bound', 'upper_bound')
 setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
 write.csv(repeat_rate_ci,'repeat_rate_ci.csv')
+
+

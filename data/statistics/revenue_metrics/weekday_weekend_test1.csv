@@ -1,0 +1,6 @@
+"","Metric","Value"
+"1","weekday_mean","503.596"
+"2","weekend_mean","356.316"
+"3","null_hypotheis","True difference in means between group weekday and group weekend is equal to 0"
+"4","alt_hypothesis","True difference in means between group weekday and group weekend is greater than 0"
+"5","p_value","0.0321215396889338"
