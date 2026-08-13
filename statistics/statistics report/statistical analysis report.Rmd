@@ -539,12 +539,11 @@ revenue_loss_summary %>%
  <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Revenue Loss Summary</h5>
   <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
   
-* Based on the active-period performance, <strong>n=127 days </strong>, the estimated revenue lost during the <strong>n=78 day period</strong> is <strong>R35843.15</strong> (mean-based:R34320). The 95%  confidence interval for the loss ranges from R29870.235 to R41816.06. 
+* Based on the active-period performance, <strong>n=127 days </strong>, the estimated revenue lost during the <strong>n=78 day period</strong> is <strong>R35843.15</strong> (median-based:R34320). The 95%  confidence interval for the loss ranges from R29870.235 to R41816.06. 
 
 
   </p>
 </div>
-
 
 ### -
 
@@ -577,6 +576,39 @@ weekday_weekend_test1 %>%
 
 The results show that weekdays generate significantly higher revenue compared to weekends. With a p-value, <strong> p = 0.032.</strong>, the null hypothesis is rejected.This suggests that the business relies more heavily on weekday activity, presenting an opportunity to boost weekend performance through targeted promotions or service offerings.   
 
+
+  </p>
+</div>
+
+### Revenue Comparison Across Weeks
+
+### {.tabset .tabset-pills}
+
+#### Comparison Test
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+week_anova_model=read.csv('week_anova_model.csv',header = TRUE)
+
+week_anova_model %>%
+  kable(
+    caption = "Revenue Comparison Across Weeks",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+
+#### Insights
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Revenue Comparison Across Weeks</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+
+ The results showed no statistically significant difference in revenue across weeks. We are accepting the null hypothesis of no difference with <strong>F(19, 107) = 1.245</strong>, <strong>P =0.237 </strong>.This indicates that revenue performance remained relatively stable throughout the active trading period, with no single week outperforming or under-performing the others significantly.
 
   </p>
 </div>

@@ -245,3 +245,14 @@ weekday_weekend_test1$Value=c(
 )
 
 write.csv(weekday_weekend_test1,'weekday_weekend_test1.csv')
+
+#ANOVA:COMPARE REVENUE ACROSS WEEKS
+week_anova_model=aov(payment_amount~factor(week), data = revenue_daily_active)
+week_anova_model=summary(week_anova_model)
+week_anova_model
+week_anova_model=data.frame(week_anova_model[[1]])
+
+#POST HOC TEST
+TukeyHSD(week_anova_model)
+ 
+write.csv(week_anova_model, 'week_anova_model.csv')
