@@ -612,3 +612,39 @@ week_anova_model %>%
 
   </p>
 </div>
+
+### Booking-Service Intelligence
+
+### {.tabset .tabset-pills}
+
+#### Completion-Rate Summary
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/booking_metrics')
+completion_summary=read.csv('completion_summary.csv',header = TRUE)
+
+completion_summary %>%
+  kable(
+    caption = "Completion Rate Confidence Summary by Service",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Completion Rate Confidence Summary by Service</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+*  Service 1 performs best among the three, with a completion rate of <strong>69%</strong>
+*  Service 3 performs worst with a completion rate of <strong>64%</strong>, however, the gap is relatively small.
+*  All CI's overlap. We therefore can conclude that there's minimal practical difference between the completion rates.
+
+
+
+  </p>
+</div>
