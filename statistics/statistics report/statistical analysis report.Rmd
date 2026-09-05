@@ -674,6 +674,55 @@ chisq_results %>%
 The P-Value indicates a value of <strong>0.91</strong>, which is significantly high than the significance level. We therefore accept the null hypothesis that the there is no significance difference between the completion rates. 
 
 
+  </p>
+</div>
+
+### Payment Intelligence
+
+### {.tabset .tabset-pills}
+
+#### Average Payment Delay
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/payment_metrics')
+avg_delay=read.csv('avg_delay.csv',header = TRUE)
+
+avg_delay %>%
+  kable(
+    caption = "Average Time Difference Between Scheduled and Payment Date",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Payment Timing Patterns
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/payment_metrics')
+payment_timing_summary=read.csv('payment_timing_summary.csv',header = TRUE)
+
+payment_timing_summary %>%
+  kable(
+    caption = "payment Timing Patterns",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">Average Payment Delay</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+Customers take <strong>2.5 months</strong> to pay after booking on average. This is concerning as it can be a cause of cash flow strains and high risk. It also indicates poor collections process. This can be due to the business offering credit terms and allow customers to pay late. 
+
 
   </p>
 </div>
