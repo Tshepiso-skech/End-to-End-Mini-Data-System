@@ -72,7 +72,7 @@ This report provides a comprehensive analysis of a carwash operational performan
   }
 </style>
 
-## 1. Customer Statistical Analysis
+## Customer Statistical Analysis
 ### {.tabset .tabset-pills}
 
 #### Lifetime Value Summary Table
@@ -120,8 +120,6 @@ This skewness value is over 2 times our benchmark of <strong>0.5</strong>. The s
 On the other hand, the kurtosis value of <strong>4.04</strong> shows the presence of a heavy tail on the right which means extreme values do exist.
   </p>
 </div>
-
-
 
 
 ### {.tabset .tabset-pills}

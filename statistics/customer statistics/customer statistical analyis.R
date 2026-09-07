@@ -79,6 +79,22 @@ setwd('C:/Users/tshep/mobile_carwash/data/analytics/customer_metrics')
 repeat_customers=read.csv('repeat_customers.csv', header = TRUE)
 customer_metrics=read.csv('customer_metrics.csv',header = TRUE)
 
+#adding a customer who is always late to the customer metrics
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/payment_metrics')
+
+completed=read.csv('completed.csv', header = TRUE)
+#average delay per customer
+customer_delay=aggregate(delay_days~customer_id, data = completed, FUN = mean)
+customer_delay=customer_delay[order(-customer_delay$delay_days),]
+head(customer_delay)
+
+# Flag late payers (>60 days)
+customer_delay$status= ifelse(customer_delay$delay_days > 60, "Late", "On-time")
+head(customer_delay)
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+write.csv(customer_delay, 'customer_delay.csv')
+
+
 #Total customers
 total_customers=nrow(repeat_customers)
 
