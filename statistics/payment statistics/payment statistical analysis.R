@@ -35,6 +35,9 @@ completed$day_type= ifelse(
   "weekday"
 )
 
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/payment_metrics')
+write.csv(completed, 'completed.csv')
+
 #COUNT PAYMENTS BY DAY TYPE
 payment_count= table(completed$day_type)
 payment_count
@@ -60,3 +63,15 @@ payment_timing_summary
 
 write.csv(payment_timing_summary,"payment_timing_summary.csv")
 
+# Bar plot
+library(ggplot2)
+
+ggplot(completed, aes(x = day_type, y = payment_amount, fill = day_type)) +
+  geom_boxplot(width = 0.6, outlier.color = "#1f3a5f", outlier.size = 1.5,fill="lightblue") +
+  labs(
+    subtitle = "Comparison of weekday vs weekend transactions",
+    x = "Day Type",
+    y = "Payment Amount (R)"
+  )+
+  theme_minimal()
+ 

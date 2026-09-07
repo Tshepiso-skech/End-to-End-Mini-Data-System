@@ -715,6 +715,28 @@ payment_timing_summary %>%
   column_spec(1, bold = TRUE)
 ```
 
+#### Weekday vs Weekend Revenue 
+```{r}
+
+#REQUIRED PACKAGES
+library(tidyverse)
+library(ggplot2)
+
+#READ DATA
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/payment_metrics')
+completed=read.csv("completed.csv", header = TRUE)
+
+ggplot(completed, aes(x = day_type, y = payment_amount, fill = day_type)) +
+  geom_boxplot(width = 0.6, outlier.color = "#1f3a5f", outlier.size = 1.5,fill="lightblue") +
+  labs(
+    subtitle = "Comparison of weekday vs weekend transactions",
+    x = "Day Type",
+    y = "Payment Amount (R)"
+  )+
+  theme_minimal()
+```
+
+
 #### Insights
 
 <div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
@@ -726,3 +748,5 @@ Customers take <strong>2.5 months</strong> to pay after booking on average. This
 
   </p>
 </div>
+
+
