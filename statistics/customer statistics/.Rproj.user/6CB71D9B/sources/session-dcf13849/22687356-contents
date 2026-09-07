@@ -1,0 +1,269 @@
+---
+#title: "Carwash Analytics"
+#author: "Tshepiso M"
+#date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+
+#This chunk runs first and sets up everything
+knitr::opts_chunk$set(
+  echo = FALSE,      # Don't show code in final report
+  warning = FALSE,   # Hide warnings
+  message = FALSE    # Hide messages
+)
+# Load required libraries
+library(dplyr)       # Provides the %>% pipe operator
+library(knitr)       # Provides the kable function
+library(kableExtra)  # Provides kable_styling, column_spec, etc.
+```
+
+<!-- ====== BANNER ====== -->
+
+<div style="background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); 
+            color: white; 
+            padding: 30px 40px; 
+            border-radius: 12px; 
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+
+  <h1 style="margin: 0; font-size: 42px; font-weight: 700;"> Statistical Analysis Report </h1>
+  <p style="margin: 8px 0 0 0; font-size: 18px; opacity: 0.9;">
+    Statistics for Operational Excellence
+  </p>
+  <hr style="width: 100px; border: 1px solid rgba(255,255,255,0.3); margin: 15px auto;">
+  <p style="margin: 0; font-size: 14px; opacity: 0.8;">
+    Prepared by: Tshepiso M &nbsp;|&nbsp; Date: `r format(Sys.Date(), "%B %d, %Y")`
+  </p>
+</div>
+
+<!-- ====== EXECUTIVE SUMMARY ====== -->
+<div style="background: #f8f9fa; 
+            padding: 20px 25px; 
+            border-radius: 10px; 
+            border-left: 5px solid #2e86c1;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;">
+
+
+This report provides a comprehensive analysis of a carwash operational performance enabling strategic improvements and growth opportunities.
+
+</div>
+
+
+<!-- ====== Statistics summary ====== -->
+
+<style>
+
+  /* Applied to ALL tabs (sets fixed width and alignment) */
+  .nav-pills > li > a {
+    width: 240px !important;       /* Adjust width as needed */
+    text-align: center !important;  /* Centers text inside fixed box */
+    border-radius: 6px;
+    font-weight: 600;
+  }
+</style>
+
+## 1. Customer Statistical Analysis
+### {.tabset .tabset-pills}
+
+#### Lifetime Value Summary Table
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+ltv_summary=read.csv('ltv_summary.csv',header = TRUE)
+
+ltv_summary %>%
+  kable(
+    caption = "Customer Lifetime Value  Statistical Summary",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+#### Insights
+
+<!-- ====== Mean evaluation ====== -->
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+  <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 600; font-size: 15px;"> Average Lifetime Value</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+    The average customer lifetime value sits at <strong>1,191.02</strong>, exceeding the median of <strong>880.00</strong>.
+This tells us that a smaller group of "high value" customers is pulling the average up, while the majority of your customer base generates a lower lifetime value. 
+
+This is further proven by standard deviation value of <strong>1054.11</strong>, which informs us that there's an extreme inequality in customer lifetime values. We can then formulate a hypothesis that our data is right skewed until proven otherwise.
+
+The mean value of <strong>1,191.02</strong> cannot be reliable. We can instead opt for the median to make operational decisions 
+  </p>
+</div>
+
+
+<!-- ====== shape distribution ====== -->
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+  <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 600; font-size: 15px;"> Shape of Distribution</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+The skewness value resulted to <strong>1.13</strong> while the kurtosis value sits at <strong>4.04</strong>.
+
+This skewness value is over 2 times our benchmark of <strong>0.5</strong>. The statistic proves our hypothesis that our data is positively skewed.
+On the other hand, the kurtosis value of <strong>4.04</strong> shows the presence of a heavy tail on the right which means extreme values do exist.
+  </p>
+</div>
+
+
+
+
+### {.tabset .tabset-pills}
+
+#### Confidence Intervals
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+mean_ltv_ci=read.csv('mean_ltv_ci.csv',header = TRUE)
+
+mean_ltv_ci %>%
+  kable(
+    caption = "Customer Lifetime Value confidence interval",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+```
+
+```{r}
+
+#Read data
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/customer_metrics')
+repeat_rate_ci=read.csv('repeat_rate_ci.csv',header = TRUE)
+
+repeat_rate_ci %>%
+  kable(
+    caption = "Booking Repeat Rate confidence interval",
+    digits = 2
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed")) %>%
+  column_spec(1, bold = TRUE)
+
+
+```
+
+
+#### Insights
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-width: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">1. Lifetime Value Confidence Interval</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+  
+The shape of the distribution informs us that the data does not follow a normal distribution since it is highly skewed, however, the number of data is greater than 30, <strong>n>30</strong>. This triggers 2 theorems:
+
+<strong>1. Central Limit Theorem:</strong> Sampling distribution of the mean becomes approximately normal, regardless of the original population.
+
+<strong>2. Slutsky's Theorem:</strong> Sample standard deviation becomes a very accurate, stable estimate of the population standard deviation,σ.
+
+Therefore t-test becomes reliable for our confidence interval calculations
+
+Even the absolute worst-case estimate for the population mean <strong>888.24</strong> is higher than what the typical customer actually spends, <strong>880.00</strong>.
+
+Our typical chosen average lifetime value of <strong>880.00</strong>[median] does not fall within the the calculated confidence interval. This proves that taking "confidence" in the mean is dangerous.
+
+Even at the lowest bound of our confidence interval, we would still be overestimating the lifetime value generated by the majority of customers.
+
+  </p>
+</div>
+
+
+
+
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">2. Repeat Rate Confidence Interval</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+  
+Calculated Repeat Rate amounted to <strong>93.9%</strong>. Nearly 94% of customers return for more than one booking.
+We are therefore 95% Confident that the true Repeat Rate in the interval <strong>[82.1%, 98.4%]</strong>.
+
+Upper bound is close to 100%. We can therefore conclude that <strong>Customer Retention</strong>.Is almost perfect.
+
+  </p>
+</div>
+
+## 2. Revenue Statistical Analysis
+
+### {.tabset .tabset-pills}
+
+#### Daily Revenue Trend Analysis
+```{r}
+
+#REQUIRED PACKAGES
+library(tidyverse)
+library(ggplot2)
+
+#READ DATA
+setwd('C:/Users/tshep/mobile_carwash/data/statistics/revenue_metrics')
+daily_revenue=read.csv("daily_revenue.csv", header = TRUE)
+zero_period=read.csv("zero_period.csv", header = TRUE)
+
+#DATE CONVERSIONS
+daily_revenue$payment_date=as.Date(daily_revenue$payment_date)
+zero_period$payment_date=as.Date(zero_period$payment_date)
+
+closure_start= min(zero_period$payment_date)
+closure_end =  max(zero_period$payment_date)
+closure_mid = mean(c(closure_start, closure_end))
+
+#DAILY TREND PLOTTING
+ggplot(daily_revenue, aes(x=payment_date, y=payment_amount))+
+  geom_line(color="steelblue", linewidth=0.6)+
+  annotate("rect",
+           xmin = closure_start,  
+           xmax = closure_end,
+           ymin = 0,
+           ymax = Inf,
+           alpha=0.2,
+           fill="red")+
+  annotate("text",
+           x = closure_mid,
+           y = max(daily_revenue$payment_amount) * 0.8,
+           label = "No Sales (Closure/Maintenance)",
+           color="red",
+           fontface="bold")+
+           labs(
+              title = "Daily Revenue Trend ",
+              x = "Date",
+              y = "Revenue (R)") +theme_minimal()
+
+```
+
+
+#### Insights
+
+
+<div style="background: #ffffff; border-left: 4px solid #1a5276; padding: 16px 20px; margin-top: 20px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #eef2f6; border-left-widt h: 4px;">
+
+ <h5 style="color: #1a5276; margin: 0 0 8px 0; font-weight: 630; font-size: 15px;">2-Month Revenue Gap Analysis</h5>
+  <p style="margin: 0; color: #4a5568; font-size: 13.5px; line-height: 1.6;">
+
+The business experienced a significant 2-Month Gap in revenue from April to mid June. This period reflects operational downtime due to maintenance and renovations. 
+
+
+  </p>
+</div>
+
+
+
+

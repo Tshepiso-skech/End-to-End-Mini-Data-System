@@ -1,0 +1,36 @@
+"0",""
+"0","#This chunk runs first and sets up everything"
+"0","knitr::opts_chunk$set("
+"0","  echo = FALSE,      # Don't show code in final report"
+"0","  warning = FALSE,   # Hide warnings"
+"0","  message = FALSE    # Hide messages"
+"0",")"
+"0","# Load required libraries"
+"0","library(dplyr)       # Provides the %>% pipe operator"
+"2","Warning: package ‘dplyr’ was built under R version 4.3.3"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","library(knitr)       # Provides the kable function"
+"2","Warning: package ‘knitr’ was built under R version 4.3.3"
+"0","library(kableExtra)  # Provides kable_styling, column_spec, etc."
+"2","
+Attaching package: ‘kableExtra’
+
+"
+"2","The following object is masked from ‘package:dplyr’:
+
+    group_rows
+
+"
