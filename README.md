@@ -1,8 +1,8 @@
-# End-to-End Data Infrastructure & ML System for Small Businesses
-![Python](https://img.shields.io/badge/Python-3.9-blue)
+# End-to-End Data Infrastructure & ML System for Small Businesses ![Python](https://img.shields.io/badge/Python-3.9-blue)
 ![R](https://img.shields.io/badge/R-4.3.2-blue)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
+
 Small service businesses struggle to track customer spending patterns, monitor revenue performance, analyze value distribution, and accurately plan resources. 
 This Minimum Viable Product bridges the gap. It serves as an operational system that pipelines the data, and delivers the precise analytics required to optimize revenue.
 
