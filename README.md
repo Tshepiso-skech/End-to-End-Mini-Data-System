@@ -20,6 +20,14 @@ Small Service businesses struggle to:
 -  This layer, [Analysis](./src/analysis.py) centralizes standard KPIs, ensuring consistent and  governed metrics; it prepares the data for interactive dashboards and reports.
 - [Statistical Analysis](./statistics/) layer performs relevant statistical computations to understand distributions of the data better and perform tests to increase our confidence in analytics.
 
+### Analytics Modules
+*Customer Intelligence*
+*Revenue Analytics*
+*Service Performance*
+*Payment Intelligence*
+*Statistical Analysis*: *Confidence Intervals, Hypothesis Tests, distribution fitting*
+*Risk & Anomaly Detection*
+
 ## Getting Started
 
 Follow these steps to initialize the PostgreSQL database schema and populate it with simulated operational data.
@@ -35,5 +43,3 @@ Follow these steps to initialize the PostgreSQL database schema and populate it 
 Run the data generation pipeline to seed the newly created database tables with simulated car wash operational workflows, transactions, and customer patterns following the [Simulate_data.py](src/simulate_data.py) and [database.py](src/database.py)
 
 
-
-## Data Analytics
