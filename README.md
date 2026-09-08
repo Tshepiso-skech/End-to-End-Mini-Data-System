@@ -4,10 +4,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-Small service businesses struggle to track customer spending patterns, monitor revenue performance, analyze value distribution, and accurately plan resources. 
-This Minimum Viable Product bridges the gap. It serves as an operational system that pipelines the data, and delivers the precise analytics required to optimize revenue.
-
-## Problem Definition
+### Problem Definition
 Small Service businesses struggle to:
 - Track customer spending patterns
 - Monitor Revenue Performance
@@ -17,16 +14,11 @@ Small Service businesses struggle to:
 **This MVP bridges that gap** It simulates almost realistic business data and stores it in predefined tables via PostgreSQL, performs minimal data engineering and feature creation, computes exploaratory analytics, KPIs and segmentation logic. This project leverages R, ![Python](https://img.shields.io/badge/Python-3.9-blue) for rigorous statistical analysis and Python, ![R](https://img.shields.io/badge/R-4.3.2-blue) for scalable data engineering; a dual-language approach that ensures both analytical depth and production readiness, bridging the gap between academic rigor and business execution.
 
 **Architecture** 
-1. [Simulate Layer](./src/simulate_data.py)
-   Serves as the data generation engine; it generates, structures and formats Pandas DataFrames relative to their target schemas. 
-2. [Data Orchestration](./src/database.py)
-   Data Pipeline that moves the simulated data to native defined database tables in Postgres
-3. [Data Engineering](./src/data_engineering.py)
-   Data is pulled from the schema layer (PostgreSQL) into the engineering layer. The pipeline ensures necessary feature engineering measures as well as detecting and dealing with inconsistencies. Necessary          transformation measures are also taken and loaded in csv formats. 
-4. [Analysis](./src/analysis.py)
-   This layer centralizes standard KPIs, ensuring consistent and  governed metrics; it prepares the data for interactive dashboards and reports.
-5. [Statistical Analysis](./statistics/)
-   This layer performs relevant statistical computations to understand distributions of the data better and perform tests to increase our confidence in analytics.
+- The [Simulation](./src/simulate_data.py) layer serves as the data generation engine; it generates, structures and formats Pandas DataFrames relative to their target schemas
+- [Data Orchestration](./src/database.py) layer moves the simulated data to native defined database tables in PostgreSQL. 
+- Data is pulled from the schema layer (PostgreSQL) into the [Data Engineering](./src/data_engineering.py) layer which ensures necessary feature engineering measures as well as detecting and dealing with inconsistencies. Necessary transformation measures are also taken and sttored in csv formats. 
+-  This layer, [Analysis](./src/analysis.py) centralizes standard KPIs, ensuring consistent and  governed metrics; it prepares the data for interactive dashboards and reports.
+- [Statistical Analysis](./statistics/) layer performs relevant statistical computations to understand distributions of the data better and perform tests to increase our confidence in analytics.
 
 ## Getting Started
 
