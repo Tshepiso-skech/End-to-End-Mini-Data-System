@@ -21,13 +21,13 @@ Small Service businesses struggle to:
 - [Statistical Analysis](./statistics/) layer performs relevant statistical computations to understand distributions of the data better and perform tests to increase our confidence in analytics.
 
 ### Analytics Modules
-*Customer Intelligence*
-*Revenue Analytics*
-*Service Performance*
-*Payment Intelligence*
-*Statistical Analysis*: *Confidence Intervals, Hypothesis Tests, distribution fitting*
-*Risk & Anomaly Detection*
-
+- *Customer Intelligence*
+- *Revenue Analytics*
+- *Service Performance*
+- *Payment Intelligence*
+- *Statistical Analysis*: *Confidence Intervals, Hypothesis Tests, distribution fitting*
+- *Risk & Anomaly Detection*
+*[View the Statistical Report](./statistics/statistical report/statistical-analysis-report.html)*
 ## Getting Started
 
 Follow these steps to initialize the PostgreSQL database schema and populate it with simulated operational data.
