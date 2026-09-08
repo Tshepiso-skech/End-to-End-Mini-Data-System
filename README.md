@@ -29,7 +29,7 @@ Small Service businesses struggle to:
 - Risk & Anomaly Detection\
   
 *View the full interactive statistical report here:*
-*[Statistical Report](https://tshepiso-skech.github.io/End-to-End-Mini-Data-System/End-to-End-Mini-Data-System/statistical-report.html)*
+*[Statistical Report](https://tshepiso-skech.github.io/End-to-End-Mini-Data-System/statistical-report.html)*
 ## Getting Started
 
 Follow these steps to initialize the PostgreSQL database schema and populate it with simulated operational data.
