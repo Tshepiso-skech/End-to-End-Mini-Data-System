@@ -28,7 +28,8 @@ Small Service businesses struggle to:
 - Statistical Analysis: Confidence Intervals, Hypothesis Tests, distribution fitting
 - Risk & Anomaly Detection\
   
-[View the Statistical Report](file:///C:/Users/tshep/mobile_carwash/statistics/statistics%20report/statistical-analysis-report.html)
+*View the full interactive statistical report here:*
+*[Statistical Report](https://tshepiso-skech.github.io/End-to-End-Mini-Data-System/)*
 ## Getting Started
 
 Follow these steps to initialize the PostgreSQL database schema and populate it with simulated operational data.
