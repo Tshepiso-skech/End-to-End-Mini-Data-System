@@ -28,7 +28,7 @@ Small Service businesses struggle to:
 - Statistical Analysis: Confidence Intervals, Hypothesis Tests, distribution fitting
 - Risk & Anomaly Detection\
   
-[View the Statistical Report](./statistics/statistical%20report/statistical-analysis-report.html)
+[View the Statistical Report](./statistics/statistics%20report/statistical-analysis-report.html)
 ## Getting Started
 
 Follow these steps to initialize the PostgreSQL database schema and populate it with simulated operational data.
